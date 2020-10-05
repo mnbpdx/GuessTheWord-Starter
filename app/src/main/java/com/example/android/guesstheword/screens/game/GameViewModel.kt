@@ -35,6 +35,13 @@ class GameViewModel : ViewModel() {
         DateUtils.formatElapsedTime(time)
     }
 
+    val wordHint = Transformations.map(word) {word ->
+        val randomIndex = (0..word.length).random()
+        "Current word has " + word.length + " letters\n" +
+        "The letter at position " + (randomIndex + 1) +
+        " is \"" + word.get(randomIndex).toUpperCase() + "\""
+    }
+
     // The list of words - the front of the list is the next word to guess
     private lateinit var wordList: MutableList<String>
 
